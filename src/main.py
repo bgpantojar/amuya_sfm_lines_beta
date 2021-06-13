@@ -31,8 +31,8 @@ K = np.array([[3414.66, 0, 3036.64], [0, 3413.37, 2015.48], [0, 0, 1]])
 
 # Extracting initial features from images necessary to create a domain object. 
 # if manual_annotations_flag is true, the features are taken from csv file with this information
-points2d, lines2d, views = initial_features(image_path, line_image_path, manual_annotation_flag=False)
-#points2d, lines2d, views = initial_features(image_path, line_image_path, manual_annotation_flag=True)
+#points2d, lines2d, views = initial_features(image_path, line_image_path, manual_annotation_flag=False)
+points2d, lines2d, views = initial_features(image_path, line_image_path, manual_annotation_flag=True)
 
 # Creating Domain object. This will contain all the information related with the structure and motion.
 domain = Domain(points2d, lines2d, views, K)

@@ -76,7 +76,8 @@ def initial_features(image_path, line_image_path, manual_annotation_flag=False):
         print('Detecting lines on images ...')
         V.image, lines_coord, _ = lsd(full_image_name, image_path, line_image_path)
         if manual_annotation_flag:
-            df = pd.read_csv(os.path.join('../../manual_line_annotation', full_image_name[:-4]+'_csv.csv'))
+            #df = pd.read_csv(os.path.join('../../manual_line_annotation', full_image_name[:-4]+'_csv.csv'))
+            df = pd.read_csv(os.path.join('manual_line_annotation', full_image_name[:-4]+'_csv.csv'))
             lines_coord = []
             for ind in [*range(df.index.stop)]:
                 dict = json.loads(df['region_shape_attributes'][ind])
