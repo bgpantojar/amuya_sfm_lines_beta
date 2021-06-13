@@ -1,0 +1,88 @@
+from sympy import MatrixSymbol, Matrix, MatMul, MatAdd
+from sympy import linear_eq_to_matrix, symbols, simplify, sin, cos, Eq, pprint
+p1x, p1y, p1z,
+p2x, p2y, p2z,
+t2x, t2y, t2z, t3x, t3y, t3z,
+X1, Y1, Z1, X2, Y2, Z2,
+n11x, n11y, n11z, n12x,
+n12y, n12z, n13x, n13y,
+n13z, n21x, n21y, n21z,
+n22x, n22y, n22z, n23x,
+n23y, n23z,
+R100, R101, R102,R110,
+R111, R112,R120, R121,
+R122,R200, R201, R202,
+R210, R211, R212,R220,
+R221, R222,R300, R301,
+R302,R310, R311,
+R312,R320, R321, R322 = symbols(
+'p1x, p1y, p1z, p2x, p2y, p2z, t2x, t2y, t2z, t3x, t3y, t3z, X1, Y1, Z1, X2, Y2, Z2,n11x, n11y, n11z, n12x, n12y, n12z, n13x, n13y, n13z,n21x, n21y, n21z, n22x, n22y, n22z, n23x, n23y, n23z,R100, R101, R102,R110, R111, R112,R120, R121, R122,R200, R201, R202,R210, R211, R212,R220, R221, R222,R300, R301, R302,R310, R311, R312,R320, R321, R322')
+
+
+
+n11 = MatrixSymbol('n11', 3, 1)
+R1 = MatrixSymbol('R1', 3, 3)
+n12 = MatrixSymbol('n12', 3, 1)
+R2 = MatrixSymbol('R2', 3, 3)
+n13 = MatrixSymbol('n13', 3, 1)
+R3 = MatrixSymbol('R3', 3, 3)
+p11 = MatrixSymbol('p11', 3, 1)
+t2 = MatrixSymbol('t2', 3, 1)
+t3 = MatrixSymbol('t3', 3, 1)
+X1 = MatrixSymbol('X1', 3, 1)
+X2 = MatrixSymbol('X2', 3, 1)
+
+Matrix(MatMul(n11.T, R1, X2))
+(R100*n11x + R110*n11y + R120*n11z)*X1 +
+(R101*n11x + R111*n11y + R121*n11z)*Y1 +
+(R102*n11x + R112*n11y + R122*n11z)*Z1
+
+Matrix(MatMul(n21.T, R1, X2))
+(R100*n21x + R110*n21y + R120*n21z)*X2 +
+(R101*n21x + R111*n21y + R121*n21z)*Y2 +
+(R102*n21x + R112*n21y + R122*n21z)*Z2
+
+
+Matrix(MatMul(n12.T, MatAdd(MatMul(R2, X1), t2)))
+(R2[0, 0]*X1[0, 0] + R2[0, 1]*X1[1, 0] + R2[0, 2]*X1[2, 0] + t2[0, 0])*n12[0, 0] +
+(R2[1, 0]*X1[0, 0] + R2[1, 1]*X1[1, 0] + R2[1, 2]*X1[2, 0] + t2[1, 0])*n12[1, 0] +
+(R2[2, 0]*X1[0, 0] + R2[2, 1]*X1[1, 0] + R2[2, 2]*X1[2, 0] + t2[2, 0])*n12[2, 0]
+
+
+Matrix(MatMul(p1.T, R1))
+R100*p1x + R110*p1y + R120*p1z,
+R101*p1x + R111*p1y + R121*p1z,
+R102*p1x + R112*p1y + R122*p1z
+
+
+
+
+eqns = [
+(R100*n1x + R110*n1y + R120*n1z)*X +
+(R101*n1x + R111*n1y + R121*n1z)*Y +
+(R102*n1x + R112*n1y + R122*n1z)*Z,
+
+(R200*X + R201*Y + R202*Z + t2x)*n2x +
+(R210*X + R211*Y + R212*Z + t2y)*n2y +
+(R220*X + R221*Y + R222*Z + t2z)*n2z,
+
+(R300*X + R301*Y + R302*Z + t3x)*n3x +
+(R310*X + R311*Y + R312*Z + t3y)*n3y +
+(R320*X + R321*Y + R322*Z + t3z)*n3y,
+
+(R101*p1x + R111*p1y + R121*p1z)*Z - (R102*p1x + R112*p1y + R122*p1z)*Y,
+(R102*p1x + R112*p1y + R122*p1z)*X - (R100*p1x + R110*p1y + R120*p1z)*Z,
+(R100*p1x + R110*p1y + R120*p1z)*Y - (R101*p1x + R111*p1y + R121*p1z)*X
+]
+
+A, b = linear_eq_to_matrix(eqns, [X, Y, Z, t2x, t2y, t2z, t3x, t3y, t3z])
+
+
+
+[
+[   R100*n1x + R110*n1y + R120*n1z,    R101*n1x + R111*n1y + R121*n1z,    R102*n1x + R112*n1y + R122*n1z,   0,   0,   0,   0,   0,   0],
+[                                0, -(R102*p1x + R112*p1y + R122*p1z),    R101*p1x + R111*p1y + R121*p1z,   0,   0,   0,   0,   0,   0],
+[   R102*p1x + R112*p1y + R122*p1z,                                 0, -(R100*p1x + R110*p1y + R120*p1z),   0,   0,   0,   0,   0,   0],
+[-(R101*p1x + R111*p1y + R121*p1z),    R100*p1x + R110*p1y + R120*p1z,                                 0,   0,   0,   0,   0,   0,   0],
+[   R200*n2x + R210*n2y + R220*n2z,    R201*n2x + R211*n2y + R221*n2z,    R202*n2x + R212*n2y + R222*n2z, n2x, n2y, n2z,   0,   0,   0],
+[   R300*n3x + R310*n3y + R320*n3y,    R301*n3x + R311*n3y + R321*n3y,    R302*n3x + R312*n3y + R322*n3y,   0,   0,   0, n3x, n3y, n3y]])
