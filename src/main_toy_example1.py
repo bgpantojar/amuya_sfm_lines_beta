@@ -21,7 +21,7 @@ warnings.filterwarnings("ignore")
 
 
 #Reading toy example information from json file
-image_path = 'toy_example1/'
+image_path = '../input/toy_example1/'
         
 #testing reading toy file
 with open(image_path+'toy_example1_3Dvision.json', 'r') as fp:
@@ -233,3 +233,53 @@ fig = plt.figure()
 ax = fig.gca(projection='3d')
 P_list = [i.P for i in domain.views]
 plot_cams(P_list, fig=fig)
+
+
+#Ground thruth checking##########
+#For checking camera centers, the centroid of their coordinates is moved to the
+#origin and then normalized (norm=1)
+#For checkin camera rotations and translations, they are computed sequentially
+P_list_GT = [Camera(np.array(domain_dict["views"][view]["P"])) for view in domain_dict["views"]]
+for Pi in P_list_GT:
+    Pi.factor()
+    Pi.center()
+fig = plt.figure()
+ax = fig.gca(projection='3d')
+plot_cams(P_list_GT, fig=fig, s=1)    
+#Check camera centers with ploting#
+#SfM
+centers = np.array([Pi.c for Pi in P_list])
+centers_centroid = np.mean(centers, axis=0)
+centers_norm = centers - centers_centroid
+centers_norm /= np.linalg.norm(centers_norm, axis=1).reshape((-1,1))
+centers_norm = np.round(centers_norm, 6)
+plot_3D_pts(centers_norm)
+#GT
+centers_GT = np.array([Pi.c for Pi in P_list_GT])
+centers_centroid_GT = np.mean(centers_GT, axis=0)
+centers_norm_GT = centers_GT - centers_centroid_GT
+centers_norm_GT /= np.linalg.norm(centers_norm_GT, axis=1).reshape((-1,1))
+centers_norm_GT = np.round(centers_norm_GT, 6)
+plot_3D_pts(centers_norm_GT)
+
+#Relative translations and rotations SfM
+relR = []
+relt = []
+for i in range(len(P_list)-1):
+    rR, rt = relativeCameraMotion(P_list[i],P_list[i+1])
+    relR.append(rR)
+    relt.append(rt)
+#Relative translations and rotations GT
+relR_GT = []
+relt_GT = []
+for i in range(len(P_list)-1):
+    rR, rt = relativeCameraMotion(P_list[i],P_list[i+1])
+    relR_GT.append(rR)
+    relt_GT.append(rt)
+
+
+#Relative translations and rotations for SfM and GT are equal!
+print("Relative rotations for SfM and GT")
+print(relR, relR_GT)
+print("Relative translations for SfM and GT")
+print(relR, relR_GT)

@@ -16,16 +16,16 @@ warnings.filterwarnings("ignore")
 
 # Path to folder containing input images
 #image_path = '../../input/images0/'
-image_path = 'images0/'
+image_path = '../input/images0/'
 # Path to save line segments from lsd algorithm
-line_image_path = './output/lsd/'
+line_image_path = '../output/lsd/'
 
 #Matrix K with the intrinsic parameters of the camera
 K = np.array([[3414.66, 0, 3036.64], [0, 3413.37, 2015.48], [0, 0, 1]])
 
 # Extracting initial features from images necessary to create a domain object. 
 # if manual_annotations_flag is true, the features are taken from csv file with this information
-manual_annotation_flag = True
+manual_annotation_flag = False
 points2d, lines2d, views = initial_features(image_path, line_image_path, manual_annotation_flag=manual_annotation_flag)
 
 # Creating Domain object. This will contain all the information related with the structure and motion.

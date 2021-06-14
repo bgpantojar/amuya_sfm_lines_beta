@@ -70,7 +70,8 @@ def initial_features(image_path, line_image_path, manual_annotation_flag=False):
         V.image, lines_coord, _ = lsd(full_image_name, image_path, line_image_path)
         if manual_annotation_flag:
             #df = pd.read_csv(os.path.join('../../manual_line_annotation', full_image_name[:-4]+'_csv.csv'))
-            df = pd.read_csv(os.path.join('manual_line_annotation', full_image_name[:-4]+'_csv.csv'))
+            df = pd.read_csv(os.path.join('../input/manual_line_annotation', full_image_name[:-4]+'_csv.csv'))
+            #df = pd.read_csv(os.path.join('manual_line_annotation', full_image_name[:-4]+'_csv.csv'))
             lines_coord = []
             for ind in [*range(df.index.stop)]:
                 dict = json.loads(df['region_shape_attributes'][ind])
@@ -2090,7 +2091,7 @@ def plot_triplet_matches(domain, view0, view1, view2, tri_match):
         plt.plot(x, y, color=c, linewidth=3)
         #plt.annotate(str(self.lines2d[l[1]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
     plt.imshow(im, cmap='gray')
-    plt.savefig("./output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_"+domain.views[view2].name[:-4]+"_triplet_matcher.png", dpi=1000)
+    plt.savefig("../output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_"+domain.views[view2].name[:-4]+"_triplet_matcher.png", dpi=1000)
 
 def plot_duplet_matches(domain, view0, view1, dup_match):
     """
@@ -2150,4 +2151,33 @@ def plot_duplet_matches(domain, view0, view1, dup_match):
         #plt.annotate(str(self.lines2d[l[0]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
         #plt.annotate(str(self.lines2d[l[1]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
     plt.imshow(im, cmap='gray')
-    plt.savefig("./output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_duplet_matcher.png", dpi=1000)
+    plt.savefig("../output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_duplet_matcher.png", dpi=1000)
+
+def plot_3D_pts(X, fig=None, c='k.'):
+    """
+    Description
+    -------
+    Given an array of 3D points, it will plot it
+
+    Parameters
+    ----------
+    X : numpy.ndarray
+        3D points array.
+    fig : matplotlib.pyplot.figure(), optional
+        If a figure is give, it will plot over it. The default is None.
+    c : str, optional
+        Color point. The default is 'k.'.
+
+    Returns
+    -------
+    None.
+
+    """
+    from mpl_toolkits.mplot3d import axes3d
+    
+    if fig is None:
+        fig = plt.figure()
+    ax = fig.gca(projection='3d')
+    X = X.reshape((-1,3))
+    ax.plot(X[:,0],X[:,1],X[:,2],c)
+    plt.axis('on') 
