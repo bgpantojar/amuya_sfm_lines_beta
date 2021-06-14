@@ -28,7 +28,7 @@ There are the three following examples:
 
 If you find this implementation useful, please cite us as:
 
----
+```
 @software{bryan_german_pantoja_rosero_2021_4946844,
   author       = {Bryan German Pantoja-Rosero and
                   Amir Rezaie},
@@ -41,4 +41,4 @@ If you find this implementation useful, please cite us as:
   doi          = {10.5281/zenodo.4946844},
   url          = {https://doi.org/10.5281/zenodo.4946844}
 }
----
+```
