@@ -2097,7 +2097,7 @@ def plot_triplet_matches(domain, view0, view1, view2, tri_match):
         plt.plot(x, y, color=c, linewidth=3)
         #plt.annotate(str(self.lines2d[l[1]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
     plt.imshow(im, cmap='gray')
-    plt.savefig("../../output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_"+domain.views[view2].name[:-4]+"_triplet_matcher.png", dpi=1000)
+    plt.savefig("./output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_"+domain.views[view2].name[:-4]+"_triplet_matcher.png", dpi=1000)
 
 def plot_duplet_matches(domain, view0, view1, dup_match):
     """
@@ -2157,4 +2157,4 @@ def plot_duplet_matches(domain, view0, view1, dup_match):
         #plt.annotate(str(self.lines2d[l[0]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
         #plt.annotate(str(self.lines2d[l[1]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
     plt.imshow(im, cmap='gray')
-    plt.savefig("../../output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_duplet_matcher.png", dpi=1000)
+    plt.savefig("./output/"+domain.views[view0].name[:-4]+"_"+domain.views[view1].name[:-4]+"_duplet_matcher.png", dpi=1000)

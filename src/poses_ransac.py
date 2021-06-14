@@ -88,7 +88,7 @@ class PosesModel:  # (object):
         x = scipy.linalg.null_space(A)
 
         if x.shape[1] > 1:  # avoid null space multidimensional
-            print("Multidimensional null space!")
+            # print("Multidimensional null space!")
             return None
 
         else:
@@ -102,7 +102,7 @@ class PosesModel:  # (object):
             # t2 = x[-3:]
             X = x[:-6]
             zz = X[2::3]
-            print(zz)
+            # print(zz)
             if sum(zz[:, 0] > 0) < 5:  # avoid mixed signs in z
                 return None
             else:

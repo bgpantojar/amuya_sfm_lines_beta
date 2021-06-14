@@ -1,6 +1,7 @@
 import numpy
 import scipy # use numpy if scipy unavailable
 import scipy.linalg # use numpy if scipy unavailable
+from tqdm import tqdm
 
 #This file is a modification of the original from scipy ransac.py
 #This was made following the copyright annunced by the author next
@@ -88,6 +89,7 @@ def mod_ransac(data, model, n, k, d, debug=False,return_all=False):
     bestinl = 0 #added
     betterinl = 0 #added
     #best_inlier_idxs = None
+    pbar = tqdm(total=k)
     while iterations < k:
         #maybe_idxs, test_idxs = random_partition(n, data.shape[0])
         maybe_idxs, _ = random_partition(n, data.shape[0])
@@ -95,7 +97,7 @@ def mod_ransac(data, model, n, k, d, debug=False,return_all=False):
         #test_points = data[test_idxs]
         maybemodel = model.fit(maybeinliers)
         if maybemodel==None:
-            print("Mixed sign on x")
+            # print("Mixed sign on x")
             continue
         #test_err = model.get_error( test_points, maybemodel)
         test_err, test_err_inl, num_inl = model.get_error(maybemodel)
@@ -141,6 +143,9 @@ def mod_ransac(data, model, n, k, d, debug=False,return_all=False):
 # =============================================================================
                 
         iterations+=1
+        if iterations % 50 == 0:
+            pbar.update(50)
+    pbar.close()
     if bestfit is None:
         raise ValueError("did not meet fit acceptance criteria")
     if return_all:

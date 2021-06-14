@@ -189,7 +189,7 @@ class Domain:
                     # plt.annotate(str(self.lines2d[l[1]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
                 
                 plt.imshow(im, cmap='gray')
-                plt.savefig("../../output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
+                plt.savefig("./output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
                                                                                     :-4] + "_matcher.png", dpi=1000)
 
             # This part will do the match between initial view and the third in each iteration
@@ -271,7 +271,7 @@ class Domain:
         self.line_match = {}  # clearing variable
         j = 0
         for view_id in range(len(self.views) - 1):
-            df = pd.read_csv(os.path.join('../../manual_line_annotation', self.views[0].name[:-4] + '_csv.csv'))
+            df = pd.read_csv(os.path.join('./manual_line_annotation', self.views[0].name[:-4] + '_csv.csv'))
             nb_lines = df.shape[0]
             matches_ids = [[i + j, i + j + nb_lines] for i in range(nb_lines)]
             tup_views = (view_id, view_id + 1)
@@ -315,7 +315,7 @@ class Domain:
                     # plt.annotate(str(self.lines2d[l[1]].id), ((x[0]+x[1])/2,(y[0]+y[1])/2), ((x[0]+x[1])/2,(y[0]+y[1])/2), c="red")
                     
                 plt.imshow(im, cmap='gray')
-                plt.savefig("../../output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
+                plt.savefig("./output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
                                                                                     :-4] + "_matcher.png", dpi=1000)
             if view_id == 0 and triplet:
                 tup_views = (view_id, view_id + 2)
@@ -410,7 +410,7 @@ class Domain:
             plt.annotate(str(self.lines2d[l[1]].id), ((x[0] + x[1]) / 2, (y[0] + y[1]) / 2),
                          ((x[0] + x[1]) / 2, (y[0] + y[1]) / 2), c="red")
         plt.imshow(im, cmap='gray')
-        plt.savefig("../../output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
+        plt.savefig("./output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
                                                                             :-4] + "_" + name_plot + ".png", dpi=1000)
 
     def match_kps(self, plot=False):
@@ -436,7 +436,7 @@ class Domain:
 
         
 
-        print("SIFT descriptor kps matching-------------")
+        # print("SIFT descriptor kps matching-------------")
 
         self.kps_match = []  # clearing variable
         
@@ -486,7 +486,7 @@ class Domain:
                 img3 = cv2.drawMatchesKnn(im1, kp1, im2, kp2, matches, None, **draw_params)
                 plt.figure()
                 plt.imshow(img3), plt.show()
-                plt.savefig("../../output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
+                plt.savefig("./output/" + self.views[view_id].name[:-4] + "_" + self.views[view_id + 1].name[
                                                                                     :-4] + "_matcher_kps.png", dpi=1000)
             
             if len(good) > 10:
@@ -613,7 +613,7 @@ class Domain:
             vpd = VPDetection(length_thresh, principal_point, focal_length, seed)
             _ = vpd.find_vps(self.views[view_id].image, all_lines_coords)
             if save_flag:
-                save_path = os.path.join('../../output/', self.views[view_id].name)
+                save_path = os.path.join('./output/', self.views[view_id].name)
             else:
                 save_path = ''
             vpd.create_debug_VP_image(show_image=False, save_image=save_path)  # save_image=save_image)
