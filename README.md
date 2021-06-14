@@ -5,17 +5,17 @@ Link to the paper: [Click here](https://ieeexplore.ieee.org/document/7035804)
 
 
 # How to use it?
-**1.Clone repository.**
+## 1.Clone repository
 
 All necessary data and codes are inside the ``src`` directory. 
 
-**2. Create a conda environment and install python packages
+## 2. Create a conda environment and install python packages
 
 ``conda create -n vis3d python=3.7.10``
 
 ``pip install -r requirements.txt``
 
-**3. Run examples
+## 3. Run examples
 
 There are the three following examples:
   1. ``main.py``: It implements the general pipeline to perform line-based SfM on natural images. 
