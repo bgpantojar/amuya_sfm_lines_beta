@@ -1,8 +1,9 @@
 # amuya_sfm_lines_beta
-This repository contains an implementations of the line-based SfM proposed in the paper **"Structure from Motion with Line Segments Under Relaxed Endpoint Constraints"** by Branislav Micusik & Horst Wildenauer. 
+This repository contains an implementations of the line-based SfM pipeline proposed in the paper **"Structure from Motion with Line Segments Under Relaxed Endpoint Constraints"** by Branislav Micusik & Horst Wildenauer. 
 
 Link to the paper: [Click here](https://ieeexplore.ieee.org/document/7035804)
 
+Please note that this repository does not include all of the steps mentioned in the paper and some of the steps have also been modified. 
 
 # How to use it?
 ## 1.Clone repository
