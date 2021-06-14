@@ -30,10 +30,8 @@ If you find this implementation useful, please cite us as:
 
 ```
 @software{bryan_german_pantoja_rosero_2021_4946844,
-  author       = {Bryan German Pantoja-Rosero and
-                  Amir Rezaie},
-  title        = {{bgpantojar/amuya\_sfm\_lines\_beta: 
-                   amuya\_sfm\_lines\_beta}},
+  author       = {Bryan German Pantoja-Rosero and Amir Rezaie},
+  title        = {Amuya Line-based SfM},
   month        = jun,
   year         = 2021,
   publisher    = {Zenodo},
