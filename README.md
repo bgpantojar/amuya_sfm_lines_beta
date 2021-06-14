@@ -1,4 +1,4 @@
-# amuya_sfm_lines_beta
+# amuya_sfm_lines_beta [![DOI](https://zenodo.org/badge/376598498.svg)](https://zenodo.org/badge/latestdoi/376598498)
 This repository contains an implementation of the line-based SfM pipeline proposed in the paper **"Structure from Motion with Line Segments Under Relaxed Endpoint Constraints"** by Branislav Micusik & Horst Wildenauer. 
 
 Link to the paper: [Click here](https://ieeexplore.ieee.org/document/7035804)
@@ -28,4 +28,15 @@ There are the three following examples:
 
 If you find this implementation useful, please cite us as:
 
-[![DOI](https://zenodo.org/badge/376598498.svg)](https://zenodo.org/badge/latestdoi/376598498)
+@software{bryan_german_pantoja_rosero_2021_4946844,
+  author       = {Bryan German Pantoja-Rosero and
+                  Amir Rezaie},
+  title        = {{bgpantojar/amuya\_sfm\_lines\_beta: 
+                   amuya\_sfm\_lines\_beta}},
+  month        = jun,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {v0.0},
+  doi          = {10.5281/zenodo.4946844},
+  url          = {https://doi.org/10.5281/zenodo.4946844}
+}
