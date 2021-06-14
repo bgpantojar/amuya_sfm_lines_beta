@@ -1,6 +1,7 @@
 numpy==1.19.1
 scipy==1.5.2
-opencv-contrib-python=4.5.1.48
+sympy==1.6.2
+opencv-contrib-python==4.5.1.48
 matplotlib==3.3.4
 pandas==1.1.3
 Pillow==8.2.0

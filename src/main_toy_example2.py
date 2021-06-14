@@ -125,7 +125,7 @@ print("Computing t -------------")
 v0, v1, v2 = 0, 1, 2
 model = PosesModel(domain, K, R0, R1, R2, view0=0, view1=1, view2=2, debug=False)
 all_data = find_correspondences_3v(domain, v0, v1, v2, n_corr="full")
-ransac_fit, num_inl = mod_ransac(all_data, model, 5, 500, 5, debug=True,
+ransac_fit, num_inl = mod_ransac(all_data, model, 5, 500, 5, debug=False,
                                  return_all=True)  
 
 # testing################################
