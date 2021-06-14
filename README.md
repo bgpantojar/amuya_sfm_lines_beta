@@ -19,9 +19,6 @@ All necessary data and codes are inside the ``src`` directory.
 
 There are the three following examples:
   1. ``main.py``: It implements the general pipeline to perform line-based SfM on natural images. 
-  2. ``main_toy_example1.py`` and ``main_toy_example2.py``: To test our pipeline, we created two toy examples. 
-
-Open terminal in repository folder and run:
-python main.py
+  2. ``main_toy_example1.py`` and ``main_toy_example2.py``: To test our pipeline, we created these two toy examples. 
 
 *To use with your data, follow the template of main.py*
