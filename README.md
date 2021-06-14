@@ -23,3 +23,9 @@ There are the three following examples:
   2. ``main_toy_example1.py`` and ``main_toy_example2.py``: To test our pipeline, we created these two toy examples. 
 
 *To test on your data, follow the template of main.py*
+
+## 4. How to cite us
+
+If you find this implementation useful, please cite us as:
+
+[![DOI](https://zenodo.org/badge/376598498.svg)](https://zenodo.org/badge/latestdoi/376598498)
