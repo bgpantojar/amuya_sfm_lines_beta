@@ -624,7 +624,7 @@ class Domain:
                 vpd.clusters[sorted_cluster_ids[1]] + id)  # second dominant parallel lines ids
             id = id + nb_lines
 
-    def plot_lines3d(self, color='k'):
+    def plot_lines3d(self, color='k', save_flag=False, name=None):
         """
         Description
         ---------
@@ -634,7 +634,10 @@ class Domain:
         ----------
         color : str, optional
             Lines color. The default is 'k'.
-
+        save_flag : bool
+            A boolean to save the figure.
+        name : str:
+            A string added to the name of the saved figure.
         Returns
         -------
         None.
@@ -673,3 +676,5 @@ class Domain:
                                             [l.points[0].coord[2], l.points[1].coord[2]], c=color)
 
         plt.axis('on')
+        if save_flag:
+            plt.savefig("./output/3d_reconstruction_" + name +".png", dpi=1000)

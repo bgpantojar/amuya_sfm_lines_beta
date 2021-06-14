@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri May 21 18:14:14 2021
-@author: pantoja
-"""
-
 import json
 from view import View
 from point import Point
@@ -23,7 +16,8 @@ import copy
 from tracker import Tracker
 from seq_utils import triangulate_model, input_bundle_adj, update_structure_motion, find_2d3D_correspond, run_pnl
 from bundle_adjustment import run_bundle_adjustment
-
+import warnings
+warnings.filterwarnings("ignore")
 
 #Reading toy example information from json file
 image_path = 'toy_example2/'
@@ -114,6 +108,7 @@ domain.spherical_representation()
 domain.cluster_lines(K, save_flag=True)
 
 # Ransac like model to find optimal relative rotations
+print("Computing R-------------")
 n_iter = 5000
 R01_candid = generate_Rij_hyp(domain, view_id=0, n_iter=n_iter)
 R12_candid = generate_Rij_hyp(domain, view_id=1, n_iter=n_iter)
@@ -126,6 +121,7 @@ R1 = R01_optim @ R0
 R2 = R12_optim @ R1
 
 ####Applying Ransac to find best model P0, P1, P2
+print("Computing t -------------")
 v0, v1, v2 = 0, 1, 2
 model = PosesModel(domain, K, R0, R1, R2, view0=0, view1=1, view2=2, debug=False)
 all_data = find_correspondences_3v(domain, v0, v1, v2, n_corr="full")

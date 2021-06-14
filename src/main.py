@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr  6 14:51:34 2021
-@author: pantoja
-"""
-
 from domain import Domain
 import numpy as np
 from utils import *
@@ -102,7 +95,7 @@ domain.tracker = Tr #assign track to the domain
 # Triangulation from tracks to Lines3D
 triangulate_model(domain, last_view=1)
 # ploting model before BA
-domain.plot_lines3d(color='k')
+domain.plot_lines3d(color='k', save_flag=True, name='Before_BA')
 
 # Bundle adjustment
 input_bundle_adjustment = input_bundle_adj(domain, rotate_model="Rodrigues", last_view=1)
@@ -110,7 +103,7 @@ op_camera_params, op_points_3d, residual = run_bundle_adjustment(input_bundle_ad
 
 # Update 3D lines domain.lines3D and view cameras domain.views[i].P
 update_structure_motion(domain, op_camera_params, op_points_3d, last_view=1)
-domain.plot_lines3d(color='b')
+domain.plot_lines3d(color='b', save_flag=True, name='After_BA')
 
 ################
 # Registering new views following pnl approach#########################################
@@ -139,7 +132,7 @@ for view_added in range(2, len(domain.views)):
     # Update 3D lines domain.lines3D and view cameras domain.views[i].P
     update_structure_motion(domain, op_camera_params, op_points_3d, last_view=view_added)
 
-domain.plot_lines3d(color='g')
+domain.plot_lines3d(color='g', save_flag=False, name='After_PnL_BA')
 
 # Ploting Camera centers
 fig = plt.figure()

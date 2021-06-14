@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr  6 14:21:44 2021
-
-@author: pantoja
-"""
-
 import numpy as np
 
 class Point:

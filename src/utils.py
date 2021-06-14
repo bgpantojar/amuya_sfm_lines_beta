@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Apr  9 14:38:12 2021
-@author: pantoja
-"""
-
 import glob
 import os
 from view import View

@@ -1,10 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Apr 22 15:13:54 2021
-@author: pantoja
-"""
-
 import numpy as np
 import scipy
 from utils import *
