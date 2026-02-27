@@ -40,3 +40,12 @@ If you find this implementation useful, please cite us as:
   url          = {https://doi.org/10.5281/zenodo.4946844}
 }
 ```
+## ⭐ Star History
+
+ <a href="https://star-history.com/#bgpantojar/amuya_sfm_lines_beta&Date" align="middle">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=bgpantojar/amuya_sfm_lines_beta&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=bgpantojar/amuya_sfm_lines_beta&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=bgpantojar/amuya_sfm_lines_beta&type=Date" />
+ </picture>
+</a>
